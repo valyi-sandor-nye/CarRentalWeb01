@@ -10,10 +10,12 @@ import java.util.List;
 @Service
 public class BookService {
     private List<Book> books = List.of(
-            Book.builder()
+            Book.
+                    builder()
                     .title("A kőszívű ember fiai")
                     .publicationDate(LocalDate.of(1852,01,01))
-                    .author(Author.builder()
+                    .author(Author
+                                    .builder()
                             .name("Jókai Mór")
                                     .dateOfBirth(LocalDate.of(1828,12,1))
                                     .build()
