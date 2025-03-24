@@ -1,7 +1,7 @@
 package hu.valyis.progenv.carrentalweb01.service;
 
-import hu.valyis.progenv.carrentalweb01.domain.Book;
-import hu.valyis.progenv.carrentalweb01.domain.Author;
+import hu.valyis.progenv.carrentalweb01.model.Book;
+import hu.valyis.progenv.carrentalweb01.model.Author;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -13,7 +13,7 @@ public class BookService {
             Book.
                     builder()
                     .title("A kőszívű ember fiai")
-                    .publicationDate(LocalDate.of(1852,01,01))
+                    .publicationDate(LocalDate.of(1852, 1, 1))
                     .author(Author
                                     .builder()
                             .name("Jókai Mór")

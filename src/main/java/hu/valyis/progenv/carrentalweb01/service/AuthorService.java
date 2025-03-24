@@ -1,6 +1,6 @@
 package hu.valyis.progenv.carrentalweb01.service;
 
-import hu.valyis.progenv.carrentalweb01.domain.Author;
+import hu.valyis.progenv.carrentalweb01.model.Author;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

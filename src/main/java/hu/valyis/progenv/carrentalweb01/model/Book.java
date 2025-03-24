@@ -1,6 +1,4 @@
-package hu.valyis.progenv.carrentalweb01.domain;
-
-import jakarta.persistence.*;
+package hu.valyis.progenv.carrentalweb01.model;
 
 import java.time.LocalDate;
 public class Book {

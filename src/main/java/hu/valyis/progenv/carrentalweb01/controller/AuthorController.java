@@ -1,6 +1,6 @@
 package hu.valyis.progenv.carrentalweb01.controller;
 
-import hu.valyis.progenv.carrentalweb01.domain.Author;
+import hu.valyis.progenv.carrentalweb01.model.Author;
 import hu.valyis.progenv.carrentalweb01.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

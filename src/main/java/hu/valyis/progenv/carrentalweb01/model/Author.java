@@ -1,4 +1,4 @@
-package hu.valyis.progenv.carrentalweb01.domain;
+package hu.valyis.progenv.carrentalweb01.model;
 
 import java.time.LocalDate;
 
