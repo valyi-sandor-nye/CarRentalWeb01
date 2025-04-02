@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController()
-@RequestMapping("car")
+@RequestMapping("cars")
 public class CarController {
 
     @Autowired
@@ -29,6 +29,11 @@ public class CarController {
     public String putCarIntoDb(@RequestBody Car car) {
         //carService.save(car);
         return car.getModel();
+    }
+
+    @DeleteMapping()
+    public String deleteCarById( @PathVariable int id) {
+        if (carService.deleteCarById(id)) return "törlés"; else return "nincs törlés";
     }
 
 }
