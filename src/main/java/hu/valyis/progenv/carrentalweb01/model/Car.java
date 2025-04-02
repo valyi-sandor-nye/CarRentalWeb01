@@ -11,7 +11,7 @@ public class Car {
     private boolean available;
     private int numberOfSeats;
 
-    //public Car() {}
+    public Car() {}
 
 
 

@@ -4,14 +4,13 @@ package hu.valyis.progenv.carrentalweb01.controller;
 import hu.valyis.progenv.carrentalweb01.model.Car;
 import hu.valyis.progenv.carrentalweb01.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController()
-@RequestMapping("cars")
+@RequestMapping("car")
 public class CarController {
 
     @Autowired
@@ -20,6 +19,17 @@ public class CarController {
     @GetMapping()
     public List<Car> getAllCars()
     {return carService.getAllCars(); }
+
+    @GetMapping("/{id}")
+    public Car getCarById(@PathVariable int id) {
+        return  carService.getCarById(id).get();
+    }
+
+    @PostMapping()
+    public String putCarIntoDb(@RequestBody Car car) {
+        //carService.save(car);
+        return car.getModel();
+    }
 
 }
 
