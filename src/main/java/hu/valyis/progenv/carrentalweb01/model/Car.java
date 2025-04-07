@@ -1,8 +1,12 @@
 package hu.valyis.progenv.carrentalweb01.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Car {
 
-    private int id;
+    @Id private int id;
     private String brand;
     private String model;
     private int buildYear;

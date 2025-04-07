@@ -1,16 +1,42 @@
 package hu.valyis.progenv.carrentalweb01.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 import java.time.LocalDate;
 
+@Entity
 public class RentalEvent {
+    @Id
     private int id;
+    @ManyToOne
+    @JoinColumn(name = "car_rented_id")
     private Car carRented;
+    @ManyToOne
+    @JoinColumn(name = "rental_customer_id")
     private Customer rentalCustomer;
     private LocalDate rentalDate;
     private LocalDate returnDate;
     private double totalCost;
     private boolean isClosed;
 
+    public Customer getRentalCustomer() {
+        return rentalCustomer;
+    }
+
+    public void setRentalCustomer(Customer rentalCustomer) {
+        this.rentalCustomer = rentalCustomer;
+    }
+
+    public Car getCarRented() {
+        return carRented;
+    }
+
+    public void setCarRented(Car carRented) {
+        this.carRented = carRented;
+    }
 
 
     private RentalEvent(Builder builder) {

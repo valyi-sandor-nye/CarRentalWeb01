@@ -1,7 +1,13 @@
 package hu.valyis.progenv.carrentalweb01.model;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+
+@Entity
 public class Customer {
-    private int id;
+    @Id private int id;
     private String firstName;
     private String lastName;
     private String email;
@@ -24,6 +30,8 @@ public class Customer {
         this.driverLicenseNumber = builder.driverLicenseNumber;
         this.countryCode = builder.countryCode;
     }
+
+
 
     public static class Builder {
         private int id;

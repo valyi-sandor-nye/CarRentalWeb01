@@ -3,6 +3,7 @@ package hu.valyis.progenv.carrentalweb01.controller;
 
 import hu.valyis.progenv.carrentalweb01.model.Car;
 import hu.valyis.progenv.carrentalweb01.service.CarService;
+import hu.valyis.progenv.carrentalweb01.service.CarServiceWithArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class CarRESTController {
     public List<Car> getAllCars()
     {return carService.getAllCars(); }
 
-    @GetMapping("api/cars/{id}")
+    @GetMapping("/{id}")
     public Car getCarById(@PathVariable int id) {
         return  carService.getCarById(id);
     }

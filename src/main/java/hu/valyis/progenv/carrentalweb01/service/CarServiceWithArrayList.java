@@ -2,8 +2,6 @@ package hu.valyis.progenv.carrentalweb01.service;
 
 import hu.valyis.progenv.carrentalweb01.exception.NosuchEntityException;
 import hu.valyis.progenv.carrentalweb01.model.Car;
-import hu.valyis.progenv.carrentalweb01.repository.CarRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,9 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CarService {
-    @Autowired
-    private CarRepository carRepository;
+public class CarServiceWithArrayList {
     private List<Car> cars = new ArrayList<Car>(List.of(
             Car.builder()
                     .id(1)
@@ -50,12 +46,14 @@ public class CarService {
     ));
 
     public List<Car> getAllCars() {
-        return carRepository.findAll();
+        return cars;
     }
 
     public Car getCarById(int id) {
-
-        Optional<Car> optCar = carRepository.findById(id);
+        Optional<Car> optCar =
+                cars.stream()
+                        .filter(car -> car.getId() == id)
+                        .findFirst();
         if (optCar.isPresent()) {
             return optCar.get();
         }
@@ -63,16 +61,24 @@ public class CarService {
     }
 
     public int insertOrUpdateCar(Car car) {
-        carRepository.save(car);
-        carRepository.flush();
-        return (int) carRepository.count();
+        int id = car.getId();
+        if (cars.stream()
+                .anyMatch(c->(c.getId()==id))
+                ) {
+            cars.set(id,car);
+        }
+        else { cars.add(car);}
+        return cars.size();
     }
 
     public boolean deleteCarById (int id) {
-        Optional<Car> carToDelete =  carRepository.findById(id);
+        Optional<Car> carToDelete =  cars
+                .stream()
+                .filter(c->(c.getId()==id))
+                .findFirst();
         if (carToDelete.isPresent()) {
-            carRepository.deleteById(id);
-            return true;
+            boolean answer = cars.remove(carToDelete);
+            return answer;
         }
         else throw new NosuchEntityException("THere is no car to delete with id:" + id);
 
