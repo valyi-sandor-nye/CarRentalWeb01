@@ -7,11 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController()
-@RequestMapping("cars")
-public class CarController {
+@RequestMapping("api/cars")
+public class CarRESTController {
 
     @Autowired
     private CarService carService;
@@ -20,20 +19,20 @@ public class CarController {
     public List<Car> getAllCars()
     {return carService.getAllCars(); }
 
-    @GetMapping("/{id}")
+    @GetMapping("api/cars/{id}")
     public Car getCarById(@PathVariable int id) {
-        return  carService.getCarById(id).get();
+        return  carService.getCarById(id);
     }
 
     @PostMapping()
-    public String putCarIntoDb(@RequestBody Car car) {
-        //carService.save(car);
-        return car.getModel();
+    public Integer putCarIntoDb(@RequestBody Car car) {
+        int answer = carService.insertOrUpdateCar(car);
+        return answer;
     }
 
-    @DeleteMapping()
+    @DeleteMapping("/{id}")
     public String deleteCarById( @PathVariable int id) {
-        if (carService.deleteCarById(id)) return "törlés"; else return "nincs törlés";
+        if(carService.deleteCarById(id)) return "car with id " +id+ " is deleted"; else return "nothing is deleted";
     }
 
 }
