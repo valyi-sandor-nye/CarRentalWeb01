@@ -4,17 +4,19 @@ import java.time.LocalDate;
 
 public class RentalEvent {
     private int id;
-    private int carId;
-    private int customerId;
+    private Car carRented;
+    private Customer rentalCustomer;
     private LocalDate rentalDate;
     private LocalDate returnDate;
     private double totalCost;
     private boolean isClosed;
 
+
+
     private RentalEvent(Builder builder) {
         this.id = builder.id;
-        this.carId = builder.carId;
-        this.customerId = builder.customerId;
+        this.carRented = builder.carRented;
+        this.rentalCustomer = builder.rentalCustomer;
         this.rentalDate = builder.rentalDate;
         this.returnDate = builder.returnDate;
         this.totalCost = builder.totalCost;
@@ -29,16 +31,16 @@ public class RentalEvent {
 
     public static class Builder {
         private int id;
-        private int carId;
-        private int customerId;
+        private Car carRented;
+        private Customer rentalCustomer;
         private LocalDate rentalDate;
         private LocalDate returnDate;
         private double totalCost;
         private boolean isClosed;
 
         public Builder id(int id) {this.id = id; return this; }
-        public Builder carId(int carId) { this.carId = carId; return this; }
-        public Builder customerId(int customerId) { this.customerId = customerId; return this; }
+        public Builder car(Car car) { this.carRented = car; return this; }
+        public Builder customer(Customer customer) { this.rentalCustomer = customer; return this; }
         public Builder rentalDate(LocalDate rentalDate) { this.rentalDate = rentalDate; return this; }
         public Builder returnDate(LocalDate returnDate) { this.returnDate = returnDate; return this; }
         public Builder totalCost(double totalCost) { this.totalCost = totalCost; return this; }
@@ -59,20 +61,20 @@ public class RentalEvent {
         this.id = id;
     }
 
-    public int getCarId() {
-        return carId;
+    public Car getCar() {
+        return carRented;
     }
 
-    public void setCarId(int carId) {
-        this.carId = carId;
+    public void setCar(Car car) {
+        this.carRented = car;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return rentalCustomer;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomerId(Customer customer) {
+        this.rentalCustomer = customer;
     }
 
     public LocalDate getRentalDate() {
@@ -111,8 +113,8 @@ public class RentalEvent {
     public String toString() {
         return "RentalEvent{" +
                 "id=" + id +
-                ", carId=" + carId +
-                ", customerId=" + customerId +
+                ", car=" + carRented +
+                ", customer=" + rentalCustomer +
                 ", rentalDate=" + rentalDate +
                 ", returnDate=" + returnDate +
                 ", totalCost=" + totalCost +

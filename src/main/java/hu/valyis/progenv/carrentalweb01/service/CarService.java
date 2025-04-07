@@ -80,7 +80,7 @@ public class CarService {
             boolean answer = cars.remove(carToDelete);
             return answer;
         }
-        else throw new NosuchEntityException("THere is no car with id:" + id);
+        else throw new NosuchEntityException("THere is no car to delete with id:" + id);
 
     }
 
