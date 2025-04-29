@@ -14,40 +14,7 @@ import java.util.Optional;
 public class CarService {
     @Autowired
     private CarRepository carRepository;
-    private List<Car> cars = new ArrayList<Car>(List.of(
-            Car.builder()
-                    .id(1)
-                    .available(true)
-                    .licensePlate("EEF257")
-                    .brand("Ford")
-                    .model("Escort")
-                    .buildYear(1992)
-                    .numberOfSeats(5)
-                    .rentalPricePerDay(4000)
-                    .build()
-            ,
-            Car.builder()
-                    .id(2)
-                    .available(true)
-                    .licensePlate("ABV016")
-                    .brand("Trabant")
-                    .model("1.1")
-                    .buildYear(1984)
-                    .numberOfSeats(4)
-                    .rentalPricePerDay(4000)
-                    .build()
-            ,
-            Car.builder()
-                    .id(3)
-                    .available(false)
-                    .licensePlate("DSH906")
-                    .brand("Skoda")
-                    .model("Favorit")
-                    .buildYear(1989)
-                    .numberOfSeats(5)
-                    .rentalPricePerDay(4000)
-                    .build()
-    ));
+
 
     public List<Car> getAllCars() {
         return carRepository.findAll();

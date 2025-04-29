@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add New Car</title>
+</head>
+<body>
+<h1>Add New Car</h1>
+<form action="#" th:action="@{/cars/add}" th:object="${car}" method="post">
+  <p>Brand: <input type="text" th:field="*{brand}" /></p>
+  <p>Model: <input type="text" th:field="*{model}" /></p>
+  <p>Serial number: <input type="text" th:field="*{licensePlate}" /></p>
+  <p><input type="submit" value="Save" /></p>
+</form>
+<a th:href="@{/cars}">Back to list</a>
+</body>
+</html>

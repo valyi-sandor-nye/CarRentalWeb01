@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Car Details</title>
+</head>
+<body>
+<h1>Car Details</h1>
+<p th:if="${errorMessage}" th:text="${errorMessage}" style="color:red;"></p>
+<div th:unless="${errorMessage}">
+    <p>ID: <span th:text="${car.id}"></span></p>
+    <p>Brand: <span th:text="${car.brand}"></span></p>
+    <p>Model: <span th:text="${car.model}"></span></p>
+    <p>License Plate: <span th:text="${car.licensePlate}"></span></p>
+    <a th:href="@{/cars}">Back to list</a>
+</div>
+</body>
+</html>

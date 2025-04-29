@@ -27,8 +27,8 @@ public class CarRESTController {
 
     @PostMapping()
     public Integer putCarIntoDb(@RequestBody Car car) {
-        int answer = carService.insertOrUpdateCar(car);
-        return answer;
+        int response = carService.insertOrUpdateCar(car);
+        return response;
     }
 
     @DeleteMapping("/{id}")

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cars List</title>
+</head>
+<body>
+<h1>Cars List</h1>
+<a th:href="@{/cars/add}">Add New Car</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>License Plate Number</th>
+        <th>rental price for a day</th>
+        <th>available?</th>
+        <th>numberOfSeats</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="car : ${cars}">
+        <td th:text="${car.id}"></td>
+        <td th:text="${car.brand}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.licensePlate}"></td>
+        <td th:text="${car.rentalPricePerDay}"></td>
+        <td th:text="${car.available}"></td>
+        <td th:text="${car.numberOfSeats}"></td>
+        <td>
+            <a th:href="@{/cars/{id2}(id2=${car.id})}">Details</a> |
+            <a th:href="@{/cars/edit/{id2}(id2=${car.id})}">Edit</a> |
+            <a th:href="@{/cars/delete/{id2}(id2=${car.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
